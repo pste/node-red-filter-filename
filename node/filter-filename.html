@@ -1,0 +1,49 @@
+<script type="text/javascript">
+    RED.nodes.registerType('filter-filename',{
+        category: 'function',
+        color: '#a6bbcf',
+        defaults: {
+            name: { value:"" }
+          , filter: {
+              value: ""
+              , required:true
+              , validate: function(v) {
+                try {
+                  new RegExp(v)
+                  return true;
+                }
+                catch (e) {
+                  return false;
+                }
+              }
+          }
+          , ignorecase: { value:"true" }
+        },
+        inputs:1,
+        outputs:1,
+        icon: "file.png",
+        label: function() {
+          return this.name||"filter-filename";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="filter-filename">
+  <div class="form-row">
+    <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+    <input type="text" id="node-input-name" placeholder="Name">
+  </div>
+  <div class="form-row">
+    <label for="node-input-filter"><i class="icon-filter"></i> Filter</label>
+    <input type="text" id="node-input-filter" placeholder="Filter">
+  </div>
+  <div>
+    <label>
+      <input type="checkbox" id="node-input-ignorecase" > Ignore case
+    </label>
+  </div>
+</script>
+
+<script type="text/x-red" data-help-name="filter-filename">
+  <p>A node that filters the message payloads using the given regular expression. If it matches the whole message will be returned, otherwise it will be dropped.</p>
+</script>

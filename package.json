@@ -1,0 +1,13 @@
+{
+    "name"         : "node-red-filter-filename",
+    "version"      : "0.0.1",
+    "description"  : "Filter file names using a regex",
+    "dependencies": {
+    },
+    "keywords": [ "node-red", "filename", "regex" ],
+    "node-red"     : {
+        "nodes": {
+            "filter-filename": "node/filter-filename.js"
+        }
+    }
+}
